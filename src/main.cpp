@@ -6,15 +6,13 @@
 #define SWITCH_AB 5
 
 SoftwareSerial radio = SoftwareSerial(2, 3);
-FT817_NBS ft817(radio);
+FT817_NBS ft817(&radio);
 
 void setFreq();
-
 
 void setup() {
   // put your setup code here, to run once:
   radio.begin(9600);
-  ft817 = FT817_NBS(radio);
   Serial.begin(9600);
   pinMode(SET_FREQ, INPUT_PULLUP);
   pinMode(SWITCH_AB, INPUT_PULLUP);
@@ -32,6 +30,7 @@ void loop() {
   }
   else if(digitalRead(SET_FREQ) != LOW){
     pressBlockSetFreq = false;
+    delay(20);
   }
 
   if (digitalRead(SWITCH_AB) == LOW && !pressBlockSwitchAB){
@@ -41,10 +40,8 @@ void loop() {
   }
   else if(digitalRead(SWITCH_AB) != LOW){
     pressBlockSwitchAB = false;
+    delay(20);
   }
-  //String freq = Serial.readString();
-  
-
 }
 
 void setFreq(){
