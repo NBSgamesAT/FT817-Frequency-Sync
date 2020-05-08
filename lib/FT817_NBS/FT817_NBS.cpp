@@ -138,3 +138,12 @@ void FT817_NBS::setFrequency(unsigned long frequency){
   data[4] = 0x1;
   sendCommand(&data[0], sizeof(data));
 }
+
+void FT817_NBS::setMode(FT817_NBS::SignalMode mode){
+  if(mode == SignalMode::UNKNOWN || mode == SignalMode::WFM){
+    return;
+  }
+  uint8_t value = (uint8_t) mode;
+  uint8_t data[5] = {value, 0x0, 0x0, 0x0, 0x7};
+  sendCommand(&data[0], sizeof(data));
+}

@@ -30,5 +30,6 @@ public:
   FT817_NBS::Frequency getFrequency();
   void setFrequency(unsigned long frequency);
   void toggleAB();
+  void setMode(FT817_NBS::SignalMode);
 };
 #endif
