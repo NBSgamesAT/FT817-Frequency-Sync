@@ -147,3 +147,14 @@ void FT817_NBS::setMode(FT817_NBS::SignalMode mode){
   uint8_t data[5] = {value, 0x0, 0x0, 0x0, 0x7};
   sendCommand(&data[0], sizeof(data));
 }
+
+void FT817_NBS::setSplit(bool on){
+  uint8_t data[5] = {0x0, 0x0, 0x0, 0x0};
+  if(on){
+    data[4] = 0x2;
+  }
+  else{
+    data[4] = 0x82;
+  }
+  sendCommand(&data[0], sizeof(data));
+}

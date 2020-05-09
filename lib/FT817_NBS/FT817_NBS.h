@@ -31,5 +31,6 @@ public:
   void setFrequency(unsigned long frequency);
   void toggleAB();
   void setMode(FT817_NBS::SignalMode);
+  void setSplit(bool on);
 };
 #endif
