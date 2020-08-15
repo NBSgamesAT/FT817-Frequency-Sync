@@ -6,7 +6,18 @@
 
 class FT817_NBS {
 public:
-  enum SignalMode {LSB = 0x0, USB = 0x1, CW = 0x2, CWR = 0x3, AM = 0x4, WFM = 0x6, FM = 0x8, DIG = 0xA, PKT = 0xC, UNKNOWN};
+  enum SignalMode {
+    LSB = 0x0,
+    USB = 0x1,
+    CW = 0x2,
+    CWR = 0x3,
+    AM = 0x4,
+    WFM = 0x6,
+    FM = 0x8,
+    DIG = 0xA,
+    PKT = 0xC,
+    UNKNOWN
+  };
 
 private:
   SoftwareSerial *serial;
@@ -26,7 +37,7 @@ public:
     unsigned long frequency;
     FT817_NBS::SignalMode mode;
   };
-  
+
   FT817_NBS::Frequency getFrequency();
   void setFrequency(unsigned long frequency);
   void toggleAB();
